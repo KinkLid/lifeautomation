@@ -1,0 +1,21 @@
+rules = [
+  OrganizeImports
+]
+
+OrganizeImports {
+  targetDialect = Scala3
+
+  removeUnused = true
+  groupedImports = Explode
+  importsOrder = Ascii
+  importSelectorsOrder = Ascii
+
+  groups = [
+    "re:java\\."
+    "re:javax\\."
+    "---"
+    "scala."
+    "---"
+    "*"
+  ]
+}
