@@ -12,9 +12,9 @@ object Main extends ZIOAppDefault {
         Response.text("Hello, World!")
       },
       Method.GET / "test-error" -> handler {
-        val a = ZIO
-        .fail(Response.internalServerError)
-        .catchAll(err => Response.internalServerError("Internal Server Error")
+        ZIO
+        .fail(new RuntimeException("Database unavailable"))
+        .catchAll(err => ZIO.succeed(Response.internalServerError("Internal Server Error"))
           )
       }
     )
