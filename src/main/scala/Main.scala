@@ -7,6 +7,9 @@ object Main extends ZIOAppDefault {
     Routes(
       Method.GET / "health" -> handler {
         Response.ok
+      },
+      Method.GET / "hello" -> handler {
+        Response.text("Hello, World!")
       }
     )
 
