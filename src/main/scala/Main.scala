@@ -10,6 +10,12 @@ object Main extends ZIOAppDefault {
       },
       Method.GET / "hello" -> handler {
         Response.text("Hello, World!")
+      },
+      Method.GET / "test-error" -> handler {
+        val a = ZIO
+        .fail(Response.internalServerError)
+        .catchAll(err => Response.internalServerError("Internal Server Error")
+          )
       }
     )
 
