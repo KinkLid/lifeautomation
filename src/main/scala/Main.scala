@@ -15,7 +15,7 @@ object Main extends ZIOAppDefault {
 
   val routes =
     Routes(
-      Method.GET / "health" -> handler {
+      Method.GET / "reminders" -> handler {
         (req: Request) => 
           val effect = for{
             a <- req
