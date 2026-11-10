@@ -21,9 +21,7 @@ object Main extends ZIOAppDefault {
             a <- req
             .body
             .asJson[CreateReminderRequest]
-            msg = a.message
-            time = a.scheduledAt
-          } yield Response.text(s"$msg, $time")
+          } yield Response.text(s"${a.message}, ${a.scheduledAt}")
 
           effect.mapError(_ => Response.badRequest("Invalid JSON"))
       }
